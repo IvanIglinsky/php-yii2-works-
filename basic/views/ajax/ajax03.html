@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="getTime()">
+
+<div id="time"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    setInterval(getTime, 1000);
+    const timeElement = document.getElementById("time")
+
+    function getTime() {
+        $.ajax({
+            url: "ajax03.php",
+            method: "POST"
+        }).done((result) => {
+            let time = JSON.parse(result)
+            timeElement.innerHTML = time.time;
+        })
+    }
+</script>
+</body>
+</html>

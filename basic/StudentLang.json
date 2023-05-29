@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Vasylko",
+    "languages": [
+      "PHP",
+      "C++",
+      "C#"
+    ]
+  },
+  {
+    "name": "Petryk",
+    "languages": [
+      "JavaScript",
+      "NodeJS",
+      "C#"
+    ]
+  },
+  {
+    "name": "Olenka",
+    "languages": [
+      "Ruby",
+      "NodeJS",
+      "Python"
+    ]
+  }
+]
+

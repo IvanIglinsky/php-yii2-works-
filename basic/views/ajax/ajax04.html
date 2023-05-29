@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div>
+  <p>Розпочніть вводити ім'я</p>
+  <input type="text" id="name">
+</div>
+<div id="result">
+
+</div>
+<script>
+  const input = document.getElementById('name');
+  const output = document.getElementById('result');
+  input.addEventListener('input', sendRequest)
+
+  async function sendRequest() {
+    const url = 'ajax04.php';
+    const user = {name: input.value};
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        // 'Content-Type': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: JSON.stringify(user)
+    });
+    const result = await response.json();
+    output.innerHTML = result.result;
+    console.log(result)
+  }
+</script>
+</body>
+</html>

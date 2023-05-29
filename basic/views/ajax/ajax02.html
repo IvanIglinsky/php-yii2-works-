@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div>
+  <input type="text" id="first-name" value="John">
+</div>
+<div>
+  <input type="text" id="last-name" value="Silver">
+</div>
+<div>
+
+  <button id="submitBtn">OK</button>
+</div>
+<div id="full-name">
+
+</div>
+<script>
+  const submitBtn = document.getElementById("submitBtn");
+  const firstName = document.getElementById("first-name");
+  const lastName = document.getElementById("last-name");
+  const fullName = document.getElementById("full-name");
+
+  submitBtn.addEventListener("click", sendRequest);
+
+  async function sendRequest() {
+    const url = "ajax02.php"
+    const user = {
+      firstName: firstName.value,
+      lastName: lastName.value
+    }
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(user)
+
+    });
+    //return response.json(); // parses JSON response into native JavaScript objects
+    const result = await response.json();
+
+    console.log(result.data.fullName)
+  }
+</script>
+</body>
+</html>
